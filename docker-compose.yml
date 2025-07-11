@@ -17,15 +17,15 @@ services:
       - message_board
 
   web:
+    container_name: django_app
     build: 
-      context: ./message_board
-      container_name: django_app
+      context: ./two_tier_project
     ports:
       - "8000:8000"
     depends_on:
       - db_postgres
     networks:
-      - message_board_net
+      - message_board
     restart: always
 
 
