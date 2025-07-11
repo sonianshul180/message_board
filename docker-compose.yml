@@ -1,0 +1,38 @@
+version: '3.9'
+
+
+services:
+  db_postgres:
+    image: postgres:14
+    container_name: db_postgres
+    environment:
+      POSTGRES_DB: message_board_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - message_board_volume:/var/lib/postgresql/data
+    networks:
+      - message_board
+
+  web:
+    build: 
+      context: ./message_board
+      container_name: django_app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db_postgres
+    networks:
+      - message_board_net
+    restart: always
+
+
+volumes:
+  message_board_volume:
+
+networks:
+  message_board:
+
+

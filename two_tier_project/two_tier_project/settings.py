@@ -80,7 +80,7 @@ DATABASES = {
         'NAME': 'message_board_db',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': 'localhost',
+        'HOST': 'db_postgres',
         'PORT': '5432',
     }
 }
